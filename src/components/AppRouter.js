@@ -1,8 +1,27 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
-import { Route, Redirect, Switch } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
+import { authRoutes, publicRoutes } from '../routes'
+import Shop from '../pages/Shop'
 
 const AppRouter = () => {
-  return <div>AppRouter</div>
+  const isAuth = false
+  return (
+    <div>
+      <Routes>
+        {isAuth === true &&
+          authRoutes.map(({ path, Element }) => (
+            <Route key={path} path={path} element={Element} />
+          ))}
+
+        {publicRoutes.map(({ path, Element }) => (
+          <Route key={path} path={path} element={Element} />
+        ))}
+
+        <Route path="/" element={<Shop />} />
+      </Routes>
+    </div>
+  )
 }
 
 export default AppRouter
