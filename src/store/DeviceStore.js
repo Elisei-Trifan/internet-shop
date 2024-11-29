@@ -11,8 +11,16 @@ export default class DeviceStore {
         id: 2,
         name: 'Смартфоны',
       },
+      {
+        id: 3,
+        name: 'Ноутбуки',
+      },
+      {
+        id: 4,
+        name: 'Наушники',
+      },
     ]
-    this._brabds = [
+    this._brands = [
       {
         id: 1,
         name: 'Samsung',
@@ -59,6 +67,7 @@ export default class DeviceStore {
         img: 'https://images.unsplash.com/photo-1598618826732-fb2fdf367775?q=80&w=1336&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
     ]
+    this._selectedType = {}
     makeAutoObservable(this)
   }
 
@@ -71,14 +80,20 @@ export default class DeviceStore {
   setDevices(devices) {
     this._devices = devices
   }
+  setSelectedType(type) {
+    this._selectedType = type
+  }
 
   get types() {
     return this._types
   }
   get brands() {
-    return this._brabds
+    return this._brands
   }
   get devices() {
     return this._devices
+  }
+  get selectedType() {
+    return this._selectedType
   }
 }
